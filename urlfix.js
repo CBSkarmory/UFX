@@ -32,5 +32,5 @@ function clean_url(url) {
     return url;
 }
 
-//run every 1 second
-setInterval(fix_urls, 1000);
+//run every 4 seconds
+setInterval(fix_urls, 4000);
