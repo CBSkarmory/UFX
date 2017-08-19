@@ -17,9 +17,19 @@ function filter_0(anchors, i) {
             anchors[i].setAttribute('tabindex','#');
             anchors[i].setAttribute('target','#');
             anchors[i].setAttribute('rel','#');
+            anchors[i].setAttribute('href',clean_url(anchors[i].href));
             console.log("[UFX] cleaned link: "+anchors[i].href);
         }
     }
+}
+
+function clean_url(url) {
+    //console.log("[UFX] trying to clean url: " + url);
+    loc_utmsrc = url.indexOf("&utm_source");
+    if(loc_utmsrc != -1) {
+        url = url.substring(0,loc_utmsrc);
+    }
+    return url;
 }
 
 //run every 1 second
