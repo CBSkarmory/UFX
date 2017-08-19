@@ -25,7 +25,7 @@ function filter_0(anchors, i) {
 
 function clean_url(url) {
     //console.log("[UFX] trying to clean url: " + url);
-    loc_utmsrc = url.indexOf("&utm_source");
+    loc_utmsrc = url.indexOf("utm");
     if(loc_utmsrc != -1) {
         url = url.substring(0,loc_utmsrc);
     }
