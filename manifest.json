@@ -1,20 +1,20 @@
 {
 
-  "manifest_version": 1,
-  "name": "FFUF",
-  "version": "0.1",
+    "manifest_version": 2,
+    "name": "FFUF",
+    "version": "0.1",
 
-  "description": "Fixes urls on fb",
+    "description": "Fixes urls on fb",
 
-  "icons": {
-    "48": "resources/ico_48.png"
-  },
+    "icons": {
+        "48": "./resources/ico_48.png"
+    },
 
-  "content_scripts": [
-    {
-      "matches": ["*://*.facebook.com"],
-      "js": ["src/urlfix.js"]
-    }
-  ]
+    "content_scripts": [
+        {
+            "matches": ["*://*.facebook.com/*"],
+            "js": ["./urlfix.js"]
+        }
+    ]
 
 }
