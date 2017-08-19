@@ -1,3 +1,4 @@
+console.log("[UFX] loaded");
 const pattern_0 = "https://l.facebook.com/l.php?u=";
 function fix_urls() {
     var anchors = document.getElementsByTagName("a");
@@ -13,9 +14,7 @@ function fix_urls() {
                 anchors[i].setAttribute('tabindex','#');
                 anchors[i].setAttribute('target','#');
                 anchors[i].setAttribute('rel','#');
-                //IE?
-                anchors[i].onclick = function(){return;};
-                console.log("cleaned link: "+anchors[i].href);
+                console.log("[UFX] cleaned link: "+anchors[i].href);
             }
             
         }
