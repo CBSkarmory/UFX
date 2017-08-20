@@ -1,5 +1,6 @@
 console.log("[UFX] loaded");
 const pattern_0 = "https://l.facebook.com/l.php?u=";
+const pattern_1 = /[^\w]source/g
 function fix_urls() {
     var anchors = document.getElementsByTagName("a");
     for(var i = 0; i < anchors.length; i++) {
@@ -25,9 +26,13 @@ function filter_0(anchors, i) {
 
 function clean_url(url) {
     //console.log("[UFX] trying to clean url: " + url);
-    loc_utmsrc = url.indexOf("utm");
-    if(loc_utmsrc != -1) {
-        url = url.substring(0,loc_utmsrc);
+    loc_utm = url.indexOf("utm");
+    if(loc_utm != -1) {
+        url = url.substring(0,loc_utm);
+    }
+    var loc_source = pattern_1.exec(url);
+    if(loc_source) {
+        url = url.substring(0,loc_source);
     }
     return url;
 }
