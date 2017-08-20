@@ -6,22 +6,27 @@ const pattern_1 = /[^\w]source/g;
 const pattern_2 = "utm";
 function fix_urls() {
     var anchors = document.getElementsByTagName("a");
-    for(var i = 0; i < anchors.length; i++) {
-        filter_0(anchors, i);
-    }
+    filter_0(anchors);
 }
 
 function filter_0(anchors) {
-    relevant = anchors.filter((anchor) => {anchors[i].href.indexOf(pattern_0) === 0});
-    relevant.forEach(function() {
-        anchors[i].onmouseover();
-        anchors[i].setAttribute('onclick','#');
-        anchors[i].setAttribute('onmouseover','#');
-        anchors[i].setAttribute('tabindex','#');
-        anchors[i].setAttribute('target','#');
-        anchors[i].setAttribute('rel','#');
-        anchors[i].setAttribute('href',clean_url(anchors[i].href));
-        cout("cleaned link: "+anchors[i].href);
+    //makes array
+    anchors = [...anchors];
+    //var timeStampInMs = window.performance && window.performance.now && window.performance.timing && window.performance.timing.navigationStart ? window.performance.now() + window.performance.timing.navigationStart : Date.now();
+    //cout("trying " + timeStampInMs + " " +Date.now());
+    relevant = anchors.filter((anchor) => {anchor.href.indexOf(pattern_0) === 0});
+    cout("relevant built, size = "+relevant.length);
+    relevant.forEach((anchor) => {
+        if(null != anchor.onclick) {
+            anchor.onmouseover();
+        }
+        anchor.setAttribute('onclick','#');
+        anchor.setAttribute('onmouseover','#');
+        anchor.setAttribute('tabindex','#');
+        anchor.setAttribute('target','#');
+        anchor.setAttribute('rel','#');
+        anchor.setAttribute('href',clean_url(anchor.href));
+        cout("cleaned link: "+anchor.href);
     });
 }
 
@@ -30,12 +35,12 @@ function clean_url(url) {
     if(loc_source) {
         url = url.substring(0,loc_source);
     }
-    
+
     loc_utm = url.indexOf(pattern_2);
     if(loc_utm != -1) {
         url = url.substring(0,loc_utm);
     }
-    
+
     return url;
 }
 
