@@ -1,5 +1,6 @@
-console.log("[UFX] loaded");
+//exactly matches fb redirects
 const pattern_0 = "https://l.facebook.com/l.php?u=";
+//matches stuff like ?source=...
 const pattern_1 = /[^\w]source/g
 function fix_urls() {
     var anchors = document.getElementsByTagName("a");
@@ -19,13 +20,12 @@ function filter_0(anchors, i) {
             anchors[i].setAttribute('target','#');
             anchors[i].setAttribute('rel','#');
             anchors[i].setAttribute('href',clean_url(anchors[i].href));
-            console.log("[UFX] cleaned link: "+anchors[i].href);
+            cout("[UFX] cleaned link: "+anchors[i].href);
         }
     }
 }
 
 function clean_url(url) {
-    //console.log("[UFX] trying to clean url: " + url);
     loc_utm = url.indexOf("utm");
     if(loc_utm != -1) {
         url = url.substring(0,loc_utm);
@@ -37,5 +37,11 @@ function clean_url(url) {
     return url;
 }
 
+//uh console out
+function cout(str) {
+    console.log("[UFX] " + str);
+}
+
+cout("loaded");
 //run every 4 seconds
 setInterval(fix_urls, 4000);
