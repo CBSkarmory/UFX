@@ -20,7 +20,7 @@ function filter_0(anchors, i) {
             anchors[i].setAttribute('target','#');
             anchors[i].setAttribute('rel','#');
             anchors[i].setAttribute('href',clean_url(anchors[i].href));
-            cout("[UFX] cleaned link: "+anchors[i].href);
+            cout("cleaned link: "+anchors[i].href);
         }
     }
 }
