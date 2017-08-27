@@ -3,4 +3,4 @@ urlfixer
 
 firefox extension
 
-cleans urls and fb
+cleans urls on fb
